@@ -1,3 +1,3 @@
 # React + Vite
 
-This for reusable 
+This for reusable component 
