@@ -1,0 +1,4 @@
+// Format date to 'DD-MM-YYYY'
+export const formatDate = (date) => {
+  return new Date(date).toLocaleDateString('en-GB'); // UK format: DD/MM/YYYY
+};
