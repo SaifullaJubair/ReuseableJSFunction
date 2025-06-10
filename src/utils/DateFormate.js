@@ -48,3 +48,43 @@ export function formatDateToBangla(dateInput, options = { showDay: false, showMo
 
   return `${weekday}${day} ${month}, ${year}`;
 }
+
+// More date format will come
+//Arabic date in bangla
+
+export const hijriMonthNamesBn = [
+  'মুহাররাম',
+  'সফর',
+  'রবিউল আউয়াল',
+  'রবিউস সানি',
+  'জুমাদাল উলা',
+  'জুমাদাল সানি',
+  'রজব',
+  'শা‘বান',
+  'রমজান',
+  'শাওয়াল',
+  'জিলকদ',
+  'জিলহজ্জ'
+];
+
+const toBanglaDigits = str =>
+  str.toString().replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+
+const getBanglaHijriDate = (date = new Date()) => {
+  const formatter = new Intl.DateTimeFormat('ar-SA-u-ca-islamic', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric'
+  });
+
+  const parts = formatter.formatToParts(date);
+  const day = parts.find(p => p.type === 'day')?.value;
+  const month = parts.find(p => p.type === 'month')?.value;
+  const year = parts.find(p => p.type === 'year')?.value;
+
+  const dayBn = toBanglaDigits(day);
+  const yearBn = toBanglaDigits(year);
+  const monthBn = hijriMonthNamesBn[parseInt(month) - 1];
+
+  return `${dayBn} ${monthBn} ${yearBn} হিজরি`;
+};
