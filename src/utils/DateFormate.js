@@ -21,3 +21,30 @@ export const timeAgo = (date) => {
   if (minutes > 0) return rtf.format(-minutes, "minute");
   return "just now";
 };
+
+// bangla date
+export function formatDateToBangla(dateInput, options = { showDay: false, showMonthName: true }) {
+  const date = new Date(dateInput);
+
+  const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+  const banglaMonths = [
+    'জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন',
+    'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'
+  ];
+  const banglaWeekdays = [
+    'রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'
+  ];
+
+  const convertToBanglaDigit = (number) =>
+    number.toString().split('').map(d => banglaDigits[parseInt(d, 10)] || d).join('');
+
+  const day = convertToBanglaDigit(date.getDate());
+  const month = options.showMonthName
+    ? banglaMonths[date.getMonth()]
+    : convertToBanglaDigit(date.getMonth() + 1);
+  const year = convertToBanglaDigit(date.getFullYear());
+
+  const weekday = options.showDay ? `${banglaWeekdays[date.getDay()]}, ` : '';
+
+  return `${weekday}${day} ${month}, ${year}`;
+}
