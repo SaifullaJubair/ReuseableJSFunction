@@ -88,3 +88,9 @@ const getBanglaHijriDate = (date = new Date()) => {
 
   return `${dayBn} ${monthBn} ${yearBn} হিজরি`;
 };
+
+
+//arabic date
+
+
+
