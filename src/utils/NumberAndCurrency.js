@@ -10,3 +10,11 @@ export const formatCurrency = (amount, currency = "USD") => {
     currency,
   }).format(amount);
 };
+
+// Format international number
+export const formatInternationalNumber = (num) => {
+  return new Intl.NumberFormat("bn-BD", {
+    notation: "compact",
+    compactDisplay: "short",
+  }).format(num);
+};
