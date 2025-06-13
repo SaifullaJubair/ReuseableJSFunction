@@ -4,12 +4,12 @@ export const formatNumber = (num) => {
 };
 
 // Format currency
-// export const formatCurrency = (amount, currency = "USD") => {
-//   return new Intl.NumberFormat("en-US", {
-//     style: "currency",
-//     currency,
-//   }).format(amount);
-// };
+export const formatCurrency = (amount, currency = "USD") => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+  }).format(amount);
+};
 
 // Format international number
 export const formatInternationalNumber = (num) => {
